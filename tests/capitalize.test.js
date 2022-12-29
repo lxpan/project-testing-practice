@@ -1,4 +1,4 @@
-import capitalize from './capitalize';
+import capitalize from '../capitalize';
 
 test('all lowercase', () => {
     expect(capitalize('foobar')).toMatch('Foobar');

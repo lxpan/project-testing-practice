@@ -1,4 +1,4 @@
-import analyzeArray from './analyzeArray';
+import analyzeArray from '../analyzeArray';
 
 const testArray = [1, 8, 3, 4, 2, 6];
 const testArrayNegatives = [-1, -2, -3, -4];

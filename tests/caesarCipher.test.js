@@ -1,4 +1,4 @@
-import caesarCipher from "./caesarCipher";
+import caesarCipher from "../caesarCipher";
 
 test('right shift 3', () => {
     expect(caesarCipher('abc',3)).toBe('def');
