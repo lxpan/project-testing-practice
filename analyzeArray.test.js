@@ -19,7 +19,7 @@ test('length', () => {
     expect(analyzeArray(testArray)).toMatchObject({ length: 6 });
 });
 
-test('length', () => {
+test('integers < 0', () => {
     expect(analyzeArray(testArrayNegatives)).toMatchObject({
         average: -2.5,
         min: -4,
