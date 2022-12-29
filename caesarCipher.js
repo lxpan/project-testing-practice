@@ -46,9 +46,12 @@ export default function caesarCipher(string, shift) {
         const char = string[i]
         const charCode = string.charCodeAt(i);
 
+        // if char is punctuation symbol
         if(punctuation.indexOf(char) >= 0) {
             encrypted.push(charCode);
             continue;
+        } else if(char === ' ') {
+            encrypted.push(' ');
         }
 
         encrypted.push(shiftLowerCase(charCode) | shiftUpperCase(charCode));

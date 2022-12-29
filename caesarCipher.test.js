@@ -8,9 +8,6 @@ test('wrap forwards', () => {
     expect(caesarCipher('xyz', 3)).toBe('abc');
 });
 
-test('multiple words', () => {
-    expect(caesarCipher('aaa bbb', 3)).toBe('ddd eee');
-})
 ;
 test('maintain case', () => {
     expect(caesarCipher('aBc', 3)).toBe('dEf');
