@@ -11,5 +11,5 @@ This includes the following:
 [Task Reference](https://www.theodinproject.com/lessons/node-path-javascript-testing-practice)
 
 ## Instructions
-To run all tests: `jest ./tests`
-To run a particular test suite: `jest ./test/functionName.test.js`
+- To run all tests: `jest ./tests`
+- To run a particular test suite: `jest ./test/functionName.test.js`
