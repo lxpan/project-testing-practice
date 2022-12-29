@@ -11,25 +11,12 @@ export default function caesarCipher(string, shift) {
         shift = shift + 26;
     }
 
-    function shiftLowerCase(_code) {
-        const codeMin = 97;  // 'a'
-        const codeMax = 122; // 'z'
-
-        // if lowercase
+    // shifts strings given each character's ASCII code
+    function performShift(_code, codeMin, codeMax) {
+        // check if lowercase or uppercase
         if(_code >= codeMin && _code <= codeMax) {
             const naiveShift = _code + shift;
-            // clamp ASCII values between 97 and 122 for lowercase
-            const codeShifted = codeMin + (naiveShift - codeMin) % (codeMax - codeMin + 1);
-            return codeShifted;
-        }
-    }
-    
-    function shiftUpperCase(_code) {
-        const codeMin = 65;  // 'A'
-        const codeMax = 90;  // 'Z'
-
-        if (_code >= codeMin && _code <= codeMax) {
-            const naiveShift = _code + shift;
+            
             const codeShifted = codeMin + (naiveShift - codeMin) % (codeMax - codeMin + 1);
             return codeShifted;
         }
@@ -48,8 +35,11 @@ export default function caesarCipher(string, shift) {
         } else if(char === ' ') {
             asciiCodeShifted.push(' ');
         }
-
-        asciiCodeShifted.push(shiftLowerCase(charCode) | shiftUpperCase(charCode));
+        /* set min & max ASCII values for lower and upper case letters respectively
+            a-z is 97 to 122
+            A-Z is 65 to 90
+        */
+        asciiCodeShifted.push(performShift(charCode, 97, 122) | performShift(charCode, 65, 90));
     }
 
     const caesarCipher = String.fromCharCode(...asciiCodeShifted);
