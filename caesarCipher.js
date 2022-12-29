@@ -14,7 +14,7 @@ export default function caesarCipher(string, shift) {
             const xMax = 122;
             
             const naiveShift = _code + shift;
-            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin);
+            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin + 1);
             return codeShifted;
         } else if(_code >= 97 && _code <= 122 && shift < 0) {
             // clamp ASCII values between 97 and 122 for lowercase
@@ -35,7 +35,7 @@ export default function caesarCipher(string, shift) {
             const xMax = 90;
             
             const naiveShift = _code + shift;
-            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin);
+            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin + 1);
             return codeShifted;
         }
     }
