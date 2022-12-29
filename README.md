@@ -9,3 +9,6 @@ This includes the following:
 - A `caesarCipher` function that takes a string and returns it with each character “shifted”.
 
 [Task Reference](https://www.theodinproject.com/lessons/node-path-javascript-testing-practice)
+
+## Instructions
+To run a particular test suite: `jest ./test/functionName.test.js`.
