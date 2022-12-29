@@ -6,56 +6,52 @@ a: 97, z: 122
 const punctuation = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
 
 export default function caesarCipher(string, shift) {
-    function shiftLowerCase(_code) {
-        // if lowercase
-        if(_code >= 97 && _code <= 122) {
-            // convert negative (left) shifts into the equivalent right shift
-            if(shift < 0) {
-                shift = 26 + shift;
-            }
+    // convert negative (left) shifts into the equivalent right shift
+    if(shift < 0) {
+        shift = shift + 26;
+    }
 
-            // clamp ASCII values between 97 and 122 for lowercase
-            const xMin = 97;
-            const xMax = 122;
-            
+    function shiftLowerCase(_code) {
+        const codeMin = 97;  // 'a'
+        const codeMax = 122; // 'z'
+
+        // if lowercase
+        if(_code >= codeMin && _code <= codeMax) {
             const naiveShift = _code + shift;
-            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin + 1);
+            // clamp ASCII values between 97 and 122 for lowercase
+            const codeShifted = codeMin + (naiveShift - codeMin) % (codeMax - codeMin + 1);
             return codeShifted;
         }
     }
     
     function shiftUpperCase(_code) {
-        if (_code >= 65 && _code <= 90) {
-            // convert negative (left) shifts into the equivalent right shift
-            if(shift < 0) {
-                shift = 26 + shift;
-            }
-            
-            const xMin = 65;
-            const xMax = 90;
-            
+        const codeMin = 65;  // 'A'
+        const codeMax = 90;  // 'Z'
+
+        if (_code >= codeMin && _code <= codeMax) {
             const naiveShift = _code + shift;
-            const codeShifted = xMin + (naiveShift - xMin) % (xMax - xMin + 1);
+            const codeShifted = codeMin + (naiveShift - codeMin) % (codeMax - codeMin + 1);
             return codeShifted;
         }
     }
 
-    const encrypted = [];
+    const asciiCodeShifted = [];
 
     for(let i = 0; i < string.length; i++) {
         const char = string[i]
         const charCode = string.charCodeAt(i);
 
-        // if char is punctuation symbol
+        // leave punctuation symbols as is
         if(punctuation.indexOf(char) >= 0) {
-            encrypted.push(charCode);
+            asciiCodeShifted.push(charCode);
             continue;
         } else if(char === ' ') {
-            encrypted.push(' ');
+            asciiCodeShifted.push(' ');
         }
 
-        encrypted.push(shiftLowerCase(charCode) | shiftUpperCase(charCode));
+        asciiCodeShifted.push(shiftLowerCase(charCode) | shiftUpperCase(charCode));
     }
 
-    return String.fromCharCode(...encrypted);
+    const caesarCipher = String.fromCharCode(...asciiCodeShifted);
+    return caesarCipher;
 }
