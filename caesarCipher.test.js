@@ -1,24 +1,28 @@
 import caesarCipher from "./caesarCipher";
 
 test('right shift 3', () => {
-    expect(caesarCipher('aaa',3)).toBe('ddd');
+    expect(caesarCipher('abc',3)).toBe('def');
 });
 
 test('wrap forwards', () => {
-    expect(caesarCipher('aaa', 30)).toBe('fff');
+    expect(caesarCipher('xyz', 3)).toBe('abc');
 });
 
+test('multiple words', () => {
+    expect(caesarCipher('aaa bbb', 3)).toBe('ddd eee');
+})
+;
 test('maintain case', () => {
-    expect(caesarCipher('aAa', 30)).toBe('fFf');
+    expect(caesarCipher('aBc', 3)).toBe('dEf');
 });
 
-// test('reverse wrap around', () => {
-//     expect(caesarCipher('abcd', -3)).toBe('xyza');
-// });
+test('reverse wrap around', () => {
+    expect(caesarCipher('abcd', -3)).toBe('xyza');
+});
 
-// test('reverse wrap entirely around', () => {
-//     expect(caesarCipher('aaa', -26)).toBe('aaa');
-// });
+test('reverse wrap entirely around', () => {
+    expect(caesarCipher('aaa', -26)).toBe('aaa');
+});
 
 test('punctuation', () => {
     expect(caesarCipher('a!a', 3)).toBe('d!d');
