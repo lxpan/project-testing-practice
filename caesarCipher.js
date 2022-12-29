@@ -16,7 +16,7 @@ export default function caesarCipher(string, shift) {
         // check if lowercase or uppercase
         if(_code >= codeMin && _code <= codeMax) {
             const naiveShift = _code + shift;
-            
+            // shifted ascii codes must wrap 'within' the given min and max (a/A & z/Z) codes
             const codeShifted = codeMin + (naiveShift - codeMin) % (codeMax - codeMin + 1);
             return codeShifted;
         }
